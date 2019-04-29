@@ -46,7 +46,8 @@ include(ExternalProject)
 
 ExternalProject_Add(foonathan_memory-ext
 GIT_REPOSITORY https://github.com/foonathan/memory.git
-GIT_TAG master
+GIT_TAG 66697bb4e1f0b812318cc960f8c5615c8c5ed72c
+PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/rev-66697bb-vs-warnings.patch
 TIMEOUT 600
 CMAKE_ARGS
   -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF
