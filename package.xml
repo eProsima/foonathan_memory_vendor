@@ -4,7 +4,7 @@
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>foonathan_memory_vendor</name>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
   <description>Foonathan/memory vendor package for Fast-RTPS.</description>
   <maintainer email="miguelcompany@eprosima.com">Miguel Company</maintainer>
   <license>Apache License 2.0</license> <!-- The contents of this vendor package are Apache 2.0 -->

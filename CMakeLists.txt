@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(foonathan_memory_vendor VERSION "0.0.1")
+project(foonathan_memory_vendor VERSION "0.1.0")
 
 ###############################################################################
 # Default shared libraries
