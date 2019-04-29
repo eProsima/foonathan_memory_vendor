@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>foonathan_memory_vendor</name>
+  <version>0.0.1</version>
+  <description>Foonathan/memory vendor package for Fast-RTPS.</description>
+  <maintainer email="miguelcompany@eprosima.com">Miguel Company</maintainer>
+  <license>Apache License 2.0</license> <!-- The contents of this vendor package are Apache 2.0 -->
+  <license>zlib License</license> <!-- foonathan/memory is licensed under the zlib License (https://github.com/foonathan/memory/blob/master/LICENSE) -->
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <buildtool_export_depend>cmake</buildtool_export_depend>
+
+  <depend>FOONATHAN_MEMORY</depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>
+
