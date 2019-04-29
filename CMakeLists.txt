@@ -9,14 +9,17 @@ project(foonathan_memory_vendor VERSION "0.0.1")
 # unless the library was explicitly added as a static library.
 option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
 
-list(APPEND extra_cmake_args -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS})
+if(BUILD_SHARED_LIBS)
+    # Library will be statically created with PIC code
+    list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=ON)
+endif()
 
 if(DEFINED CMAKE_BUILD_TYPE)
-list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+    list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
 endif()
 
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
-list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
+    list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
 if(ANDROID)
   if(DEFINED ANDROID_ABI)
     list(APPEND extra_cmake_args "-DANDROID_ABI=${ANDROID_ABI}")
