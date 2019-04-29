@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.5)
 project(foonathan_memory_vendor VERSION "0.0.1")
 
-list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=ON)
+###############################################################################
+# Default shared libraries
+###############################################################################
+# Global flag to cause add_library() to create shared libraries if on.
+# If set to true, this will cause all libraries to be built shared
+# unless the library was explicitly added as a static library.
+option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
+
+list(APPEND extra_cmake_args -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS})
 
 if(DEFINED CMAKE_BUILD_TYPE)
 list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
@@ -41,7 +49,6 @@ GIT_REPOSITORY https://github.com/foonathan/memory.git
 GIT_TAG master
 TIMEOUT 600
 CMAKE_ARGS
-  # -DCMAKE_POSITION_INDEPENDENT_CODE=ON
   -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF
   -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
   -DFOONATHAN_MEMORY_BUILD_TOOLS=ON
