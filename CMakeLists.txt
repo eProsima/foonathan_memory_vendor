@@ -47,7 +47,7 @@ endif()
 endif()
 include(ExternalProject)
 
-ExternalProject_Add(foonathan_memory-ext
+ExternalProject_Add(foo_mem-ext
 GIT_REPOSITORY https://github.com/foonathan/memory.git
 GIT_TAG 66697bb4e1f0b812318cc960f8c5615c8c5ed72c
 PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/rev-66697bb-vs-warnings.patch
@@ -56,13 +56,13 @@ CMAKE_ARGS
   -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF
   -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
   -DFOONATHAN_MEMORY_BUILD_TOOLS=ON
-  -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foonathan_memory_external_project_install
+  -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
   ${extra_cmake_args}
   -Wno-dev
 )
 
 # The external project will install to the build folder, but we'll install that on make install.
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foonathan_memory_external_project_install/
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install/
 DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 configure_file(foonathan_memory_vendorConfig.cmake.in
