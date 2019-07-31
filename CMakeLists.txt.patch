@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index cf28169..519ea8f 100644
+index cf28169..16b6cdf 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -38,12 +38,12 @@ if(UNIX)
@@ -20,3 +20,23 @@ index cf28169..519ea8f 100644
      set(FOONATHAN_MEMORY_ADDITIONAL_FILES_INSTALL_DIR "./")
      set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
  else()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 030dba3..855a7aa 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -100,8 +100,14 @@ target_compile_definitions(foonathan_memory PUBLIC
+                             FOONATHAN_MEMORY_VERSION_MINOR=${FOONATHAN_MEMORY_VERSION_MINOR}
+                             FOONATHAN_MEMORY_VERSION_PATCH=${FOONATHAN_MEMORY_VERSION_PATCH})
+ 
++if(CMAKE_POSITION_INDEPENDENT_CODE)
++    set(OUTPUT_NAME_STR "foonathan_memory-${FOONATHAN_MEMORY_VERSION}")
++else()
++    set(OUTPUT_NAME_STR "libfoonathan_memory-${FOONATHAN_MEMORY_VERSION}")
++endif()
++
+ set_target_properties(foonathan_memory PROPERTIES
+-                                       OUTPUT_NAME "foonathan_memory-${FOONATHAN_MEMORY_VERSION}")
++                                       OUTPUT_NAME ${OUTPUT_NAME_STR})
+ 
+ install(TARGETS foonathan_memory EXPORT foonathan_memoryTargets
+         RUNTIME       DESTINATION ${FOONATHAN_MEMORY_RUNTIME_INSTALL_DIR}
