@@ -50,6 +50,10 @@ if(NOT foonathan_memory_FOUND)
   endif()
   include(ExternalProject)
   
+  if(INSTALLER_PLATFORM)
+    set(PATCH_COMMAND_STR PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch && sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
+  endif()
+
   ExternalProject_Add(foo_mem-ext
   GIT_REPOSITORY https://github.com/foonathan/memory.git
   GIT_TAG master
@@ -64,6 +68,7 @@ if(NOT foonathan_memory_FOUND)
     -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
     ${extra_cmake_args}
     -Wno-dev
+    ${PATCH_COMMAND_STR}
   )
   
   # The external project will install to the build folder, but we'll install that on make install.
