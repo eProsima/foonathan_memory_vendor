@@ -15,7 +15,6 @@ if(NOT foonathan_memory_FOUND)
   if(BUILD_SHARED_LIBS)
     # Library will be statically created with PIC code
     list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=ON)
-    list(APPEND extra_cmake_args -DBUILD_SHARED_LIBS=ON)
   endif()
   
   if(DEFINED CMAKE_BUILD_TYPE)
