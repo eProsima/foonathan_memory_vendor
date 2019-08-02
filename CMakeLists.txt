@@ -60,7 +60,6 @@ if(NOT foonathan_memory_FOUND)
   TIMEOUT 600
   # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
   UPDATE_COMMAND ""
-  UPDATE_DISCONNECTED 1
   CMAKE_ARGS
     -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF
     -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
