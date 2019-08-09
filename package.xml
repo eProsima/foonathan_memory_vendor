@@ -13,7 +13,7 @@
 
   <buildtool_export_depend>cmake</buildtool_export_depend>
 
-  <depend>FOONATHAN_MEMORY</depend>
+  <!--depend>FOONATHAN_MEMORY</depend-->
 
   <export>
     <build_type>cmake</build_type>
