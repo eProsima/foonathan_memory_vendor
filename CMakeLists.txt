@@ -1,6 +1,36 @@
 cmake_minimum_required(VERSION 3.5)
 project(foonathan_memory_vendor VERSION "0.2.0")
 
+# force install of foonathan_memory has two downsides:
+# - it requires admin privileges to simply build it when default installation prefix is chosen
+# - the lack of a build prevents managing several architectures simultaneously (once one is compiled it prevents any
+#    other generating linking errors)
+# we are going to profit from CMake capability to search architecture specific config files and solve the second issue
+
+if("${CMAKE_GENERATOR_PLATFORM}" MATCHES "^([Ww][Ii][Nn]32)$")
+    set(foonathan_vendor_FIND_LIBRARY_USE "FIND_LIBRARY_USE_LIB32_PATHS")
+    get_property(foonathan_vendor_FIND_LIBRARY_USE_value GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+    set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+    set( CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX 32 )         
+elseif ("${CMAKE_GENERATOR_PLATFORM}" MATCHES "^([Xx]64)$")
+    set(foonathan_vendor_FIND_LIBRARY_USE "FIND_LIBRARY_USE_LIB64_PATHS")
+    get_property(foonathan_vendor_FIND_LIBRARY_USE_value GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+    set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS TRUE)
+    set( CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX 64 )     
+endif()
+
+#restore global properties state
+if(foonathan_vendor_FIND_LIBRARY_USE)
+    set_property(GLOBAL PROPERTY ${foonathan_vendor_FIND_LIBRARY_USE} ${foonathan_vendor_FIND_LIBRARY_USE_value})
+    unset(foonathan_vendor_FIND_LIBRARY_USE)
+    unset(foonathan_vendor_FIND_LIBRARY_USE_value)
+endif()
+
+
+if( NOT DEFINED FOONATHAN_INSTALLATION_DIR )
+    set( FOONATHAN_INSTALLATION_DIR "${CMAKE_INSTALL_PREFIX}/lib${CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX}/${PROJECT_NAME}")
+endif()
+
 find_package(foonathan_memory QUIET)
 
 if(NOT foonathan_memory_FOUND)
@@ -19,6 +49,10 @@ if(NOT foonathan_memory_FOUND)
   
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+  endif()
+
+  if(DEFINED CMAKE_LIBRARY_ARCHITECTURE)
+    list(APPEND extra_cmake_args -DCMAKE_LIBRARY_ARCHITECTURE=${CMAKE_LIBRARY_ARCHITECTURE})
   endif()
   
   if(DEFINED CMAKE_TOOLCHAIN_FILE)
@@ -72,7 +106,7 @@ if(NOT foonathan_memory_FOUND)
   
   # The external project will install to the build folder, but we'll install that on make install.
   install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install/
-  DESTINATION ${CMAKE_INSTALL_PREFIX})
+  DESTINATION ${FOONATHAN_INSTALLATION_DIR})
 else()
   message(STATUS "Found foonathan_memory ${foonathan_memory_VERSION}")
 endif()
@@ -87,9 +121,9 @@ write_basic_package_version_file(
 
 install(FILES
   package.xml
-  DESTINATION share/${PROJECT_NAME})
+  DESTINATION ${FOONATHAN_INSTALLATION_DIR})
 
 install(FILES
   "${PROJECT_BINARY_DIR}/foonathan_memory_vendorConfig.cmake"
   "${PROJECT_BINARY_DIR}/foonathan_memory_vendorConfig-version.cmake"
-  DESTINATION share/${PROJECT_NAME}/cmake)
+  DESTINATION ${FOONATHAN_INSTALLATION_DIR}/cmake)
