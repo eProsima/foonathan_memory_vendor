@@ -19,16 +19,19 @@ elseif ("${CMAKE_GENERATOR_PLATFORM}" MATCHES "^([Xx]64)$")
     set( CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX 64 )     
 endif()
 
+if( NOT DEFINED FOONATHAN_INSTALLATION_DIR )
+    if(WIN32)
+        set( FOONATHAN_INSTALLATION_DIR "${CMAKE_INSTALL_PREFIX}/lib${CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX}/${PROJECT_NAME}")
+    else()
+        set( FOONATHAN_INSTALLATION_DIR "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}")
+    endif()
+endif()
+
 #restore global properties state
 if(foonathan_vendor_FIND_LIBRARY_USE)
     set_property(GLOBAL PROPERTY ${foonathan_vendor_FIND_LIBRARY_USE} ${foonathan_vendor_FIND_LIBRARY_USE_value})
     unset(foonathan_vendor_FIND_LIBRARY_USE)
     unset(foonathan_vendor_FIND_LIBRARY_USE_value)
-endif()
-
-
-if( NOT DEFINED FOONATHAN_INSTALLATION_DIR )
-    set( FOONATHAN_INSTALLATION_DIR "${CMAKE_INSTALL_PREFIX}/lib${CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX}/${PROJECT_NAME}")
 endif()
 
 find_package(foonathan_memory QUIET)
