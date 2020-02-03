@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 project(foonathan_memory_vendor VERSION "0.5.0")
 
 find_package(foonathan_memory QUIET)
-find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_copyright QUIET)
+find_package(ament_cmake_lint_cmake QUIET)
+find_package(ament_cmake_xmllint QUIET)
 
 if(NOT foonathan_memory_FOUND)
   ###############################################################################
@@ -87,11 +89,16 @@ write_basic_package_version_file(
   COMPATIBILITY AnyNewerVersion)
 
 if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
+  if(ament_cmake_copyright_FOUND)
+    ament_copyright()
+  endif()
+  if(ament_cmake_lint_cmake_FOUND)
+    ament_lint_cmake()
+  endif()
+  if(ament_cmake_xmllint_FOUND)
+    ament_xmllint()
+  endif()
 endif()
-
-ament_package()
 
 install(FILES
   package.xml
