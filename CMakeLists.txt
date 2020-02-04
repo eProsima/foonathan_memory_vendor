@@ -11,16 +11,16 @@ if(NOT foonathan_memory_FOUND)
   # If set to true, this will cause all libraries to be built shared
   # unless the library was explicitly added as a static library.
   option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
-  
+
   if(BUILD_SHARED_LIBS)
     # Library will be statically created with PIC code
     list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=ON)
   endif()
-  
+
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
   endif()
-  
+
   if(DEFINED CMAKE_TOOLCHAIN_FILE)
     list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
     if(ANDROID)
@@ -49,12 +49,12 @@ if(NOT foonathan_memory_FOUND)
     endif()
   endif()
   include(ExternalProject)
-  
+
   if(INSTALLER_PLATFORM)
     set(PATCH_COMMAND_STR PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch && sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
   endif()
 
-  ExternalProject_Add(foo_mem-ext
+  externalproject_add(foo_mem-ext
   GIT_REPOSITORY https://github.com/foonathan/memory.git
   GIT_TAG master
   TIMEOUT 600
@@ -69,7 +69,7 @@ if(NOT foonathan_memory_FOUND)
     -Wno-dev
     ${PATCH_COMMAND_STR}
   )
-  
+
   # The external project will install to the build folder, but we'll install that on make install.
   install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install/
   DESTINATION ${CMAKE_INSTALL_PREFIX})
@@ -84,6 +84,21 @@ include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
   "${PROJECT_BINARY_DIR}/foonathan_memory_vendorConfig-version.cmake"
   COMPATIBILITY AnyNewerVersion)
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_copyright QUIET)
+  find_package(ament_cmake_lint_cmake QUIET)
+  find_package(ament_cmake_xmllint QUIET)
+  if(ament_cmake_copyright_FOUND)
+    ament_copyright()
+  endif()
+  if(ament_cmake_lint_cmake_FOUND)
+    ament_lint_cmake()
+  endif()
+  if(ament_cmake_xmllint_FOUND)
+    ament_xmllint()
+  endif()
+endif()
 
 install(FILES
   package.xml
