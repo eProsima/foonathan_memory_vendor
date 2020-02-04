@@ -17,7 +17,6 @@
 
   <!--depend>FOONATHAN_MEMORY</depend-->
   
-  <test_depend>ament_package</test_depend>
   <test_depend>ament_cmake_copyright</test_depend>
   <test_depend>ament_cmake_lint_cmake</test_depend>
   <test_depend>ament_cmake_test</test_depend>
