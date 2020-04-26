@@ -85,6 +85,7 @@ write_basic_package_version_file(
   "${PROJECT_BINARY_DIR}/foonathan_memory_vendorConfig-version.cmake"
   COMPATIBILITY AnyNewerVersion)
 
+find_package(ament_cmake_test QUIET)
 if(BUILD_TESTING)
   find_package(ament_cmake_copyright QUIET)
   find_package(ament_cmake_lint_cmake QUIET)
