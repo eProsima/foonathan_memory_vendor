@@ -4,7 +4,7 @@ This document is a declaration of software quality for the `foonathan_memory` pa
 
 This quality declaration claims that the third party package `foonathan_memory` is in the **Quality Level 4** category.
 
-Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 3 in REP-2004](https://www.ros.org/reps/rep-2004.html).
+Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 4 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
 ## Version Policy [1]
 
@@ -139,7 +139,7 @@ Even though `foonathan_memory` by itself will not likely reach the equivalent le
 ROS contributors will need to conduct coverage tests to identify the remaining API and features that are not currently covered by tests.
 If features and portions of the public API that are used in ROS dependencies are found to be untested, then the appropriate tests will be required.
 To solidify version stability, `foonathan_memory_vendor` shall declare a targeted version for each ROS 2 distribution release.
-If a newer version is desired for a previously released ROS 2 distribution, then it will need to be verified that the API does change between versions.
+If a newer version is desired for a previously released ROS 2 distribution, then it will need to be verified that the API does not change between versions.
 `foonathan_memory` tests will need to be conducted on all ROS 2 tier 1 platforms for each pinned version so regressions can be identified and ticketed upstream.
 Performance tests should be written to ensure that `foonathan_memory` meets its performance targets and the ROS community can track performance regressions in newer pinned versions.
 `foonathan_memory` does not have a rigorous change control policy, therefore the onus is on the ROS packages incorporating each pinned version to provide a suitable review of its quality as a third-party dependency. As `foonathan_memory` is not maintained by the ROS community, requirements for automatic linting can be waved.
