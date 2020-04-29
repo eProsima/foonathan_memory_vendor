@@ -14,7 +14,9 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 ### Version Stability [1.ii]
 
-`foonathan_memory` is in the beta stage, and currently has a version less than 1.0. The public API may change between minor version updates.
+`foonathan_memory` currently has a version less than 1.0 but is in maintenance mode.
+Large API changes may occur during minor version updates, and smaller API additions may occur during patch version updates.
+A summary of its changes are contained in its [CHANGELOG](https://github.com/foonathan/memory/blob/master/CHANGELOG.MD).
 
 ### Public API Declaration [1.iii]
 
@@ -44,6 +46,7 @@ This package does not require that changes occur through a pull request.
 Many changes are committed directly by its maintainer.
 
 ### Contributor Origin [2.ii]
+
 This package does not have a confirmation of contributor origin policy.
 
 ### Peer Review Policy [2.iii]
