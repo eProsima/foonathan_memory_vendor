@@ -44,7 +44,7 @@ This package uses DCO as its confirmation of contributor origin policy. More inf
 
 ### Peer Review Policy [2.iii]
 
-Following the recommended guidelines for ROS Core packages, all pull requests must have at least 1 peer review.
+Following the recommended guidelines for ROS Core packages in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#package-requirements), all pull requests must have at least 1 peer review.
 
 ### Continuous Integration [2.iv]
 
@@ -62,12 +62,11 @@ All pull requests must resolve related documentation changes before merging.
 
 ### Public API Documentation [3.ii]
 
-`foonathan_memory_vendor` has embedded API documentation, and is available in its source files.
-There is documentation for all of the public API, and new additions to the public API require documentation before being added.
+`foonathan_memory_vendor` does not have an API of its own and therefore does not require public API documentation.
 
 ### License [3.iii]
 
-The license for `foonathan_memory_vendor` is Apache 2.0, and a summary is in each source file, the type is declared in the [package.xml](package.xml) manifest file, and a full copy of the license is in the [LICENSE](../LICENSE) file.
+The license for `foonathan_memory_vendor` is Apache 2.0, and a summary is in each source file, the type is declared in the [package.xml](package.xml) manifest file, and a full copy of the license is in the [LICENSE](LICENSE) file.
 
 There is an automated test which runs a linter that ensures each file has a license statement.
 
@@ -83,11 +82,11 @@ Results of the copyright tests can be found [here](https://ci.ros2.org/view/nigh
 
 ## Testing [4]
 
-`foonathan_memory_vendor` is a package providing solely CMake files and therefore does not require tests and has no coverage or performance requirements.
+`foonathan_memory_vendor` is a package providing solely CMake files and therefore does not require API or feature tests and has no coverage or performance requirements (sections [4.i - 4.iv]).
 
 ### Linters and Static Analysis [4.v]
 
-`foonathan_memory_vendor` uses and passes all the standard linters and static analysis tools for a CMake package as described in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#linters).
+`foonathan_memory_vendor` uses and passes all the standard linters and static analysis tools for a CMake package as described in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#linters-and-static-analysis).
 
 Results of linter tests can be found [here](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/foonathan_memory_vendor/).
 
@@ -118,6 +117,8 @@ Currently nightly results can be seen here:
 * [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/foonathan_memory_vendor/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/foonathan_memory_vendor/)
 
-## Vulnerability Disclosure Policy [7.i]
+## Security [7]
 
-This package does not yet have a Vulnerability Disclosure Policy
+### Vulnerability Disclosure Policy [7.i]
+
+This package does not yet have a Vulnerability Disclosure Policy.
