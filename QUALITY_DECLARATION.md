@@ -48,7 +48,8 @@ Following the recommended guidelines for ROS Core packages in the [ROS 2 Develop
 
 ### Continuous Integration [2.iv]
 
-All pull request must pass CI on all [tier 1 platforms](https://www.ros.org/reps/rep-2000.html#support-tiers)
+Pull requests are currently not tested on CI before merging.
+Instead, changes to `foonathan_memory_vendor` are tested [nightly](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/foonathan_memory_vendor/).
 
 ### Documentation Policy [2.v]
 
