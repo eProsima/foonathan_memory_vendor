@@ -21,22 +21,6 @@ if(NOT foonathan_memory_FOUND)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
   endif()
 
-  if(DEFINED CMAKE_C_COMPILER_TARGET)
-    list(APPEND extra_cmake_args "-DCMAKE_C_COMPILER_TARGET=${CMAKE_C_COMPILER_TARGET}")
-  endif()
-
-  if(DEFINED CMAKE_CXX_COMPILER_TARGET)
-    list(APPEND extra_cmake_args "-DCMAKE_CXX_COMPILER_TARGET=${CMAKE_CXX_COMPILER_TARGET}")
-  endif()
-
-  if(DEFINED CMAKE_MAKE_PROGRAM)
-    list(APPEND extra_cmake_args "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}")
-  endif()
-
-  if(DEFINED CMAKE_SYSROOT)
-    list(APPEND extra_cmake_args "-DCMAKE_SYSROOT=${CMAKE_SYSROOT}")
-  endif()
-
   if(DEFINED CMAKE_TOOLCHAIN_FILE)
     list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
     if(ANDROID)
@@ -70,8 +54,6 @@ if(NOT foonathan_memory_FOUND)
     set(PATCH_COMMAND_STR PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch && sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
   endif()
 
-  string(REPLACE ";" " " extra_cmake_args "${extra_cmake_args}")
-
   externalproject_add(foo_mem-ext
   GIT_REPOSITORY https://github.com/foonathan/memory.git
   GIT_TAG c619113
@@ -83,6 +65,13 @@ if(NOT foonathan_memory_FOUND)
     -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
     -DFOONATHAN_MEMORY_BUILD_TOOLS=ON
     -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
+    -DCMAKE_SYSROOT:PATH=${CMAKE_SYSROOT}
+    -DCMAKE_MAKE_PROGRAM:FILEPATH=${CMAKE_MAKE_PROGRAM}
+    -DCMAKE_C_COMPILER_TARGET:STRING=${CMAKE_C_COMPILER_TARGET}
+    -DCMAKE_CXX_COMPILER_TARGET:STRING=${CMAKE_CXX_COMPILER_TARGET}
+    -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
+    -DCMAKE_C_COMPILER:FILEPATH=${CMAKE_C_COMPILER}
+    -DCMAKE_AR:FILEPATH=${CMAKE_AR}
     ${extra_cmake_args}
     -Wno-dev
     ${PATCH_COMMAND_STR}
