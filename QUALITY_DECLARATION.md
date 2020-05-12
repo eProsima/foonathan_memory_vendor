@@ -59,7 +59,8 @@ All pull requests must resolve related documentation changes before merging.
 
 ### Feature Documentation [3.i]
 
-`foonathan_memory_vendor` does not currently document its features.
+`foonathan_memory_vendor` is a vendor package and doesn't provide features of its own.
+Therefore, this package does require feature documentation.
 
 ### Public API Documentation [3.ii]
 
