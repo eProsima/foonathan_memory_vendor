@@ -14,7 +14,7 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 ### Version Stability [1.ii]
 
-`foonathan_memory_vendor` is not yet at a stable version, i.e. `>= 1.0.0`.
+`foonathan_memory_vendor` is at or above a stable version, i.e. `>= 1.0.0`.
 
 ### Public API Declaration [1.iii]
 
