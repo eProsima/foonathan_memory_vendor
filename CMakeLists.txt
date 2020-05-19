@@ -12,6 +12,9 @@ if(NOT foonathan_memory_FOUND)
   # unless the library was explicitly added as a static library.
   option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
 
+  # Option to build memory tools
+  option(BUILD_MEMORY_TOOLS "Build memory tools" ON)
+
   if(BUILD_SHARED_LIBS)
     # Library will be statically created with PIC code
     list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=ON)
@@ -63,7 +66,7 @@ if(NOT foonathan_memory_FOUND)
   CMAKE_ARGS
     -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF
     -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
-    -DFOONATHAN_MEMORY_BUILD_TOOLS=ON
+    -DFOONATHAN_MEMORY_BUILD_TOOLS=${BUILD_MEMORY_TOOLS}
     -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
     ${extra_cmake_args}
     -Wno-dev
