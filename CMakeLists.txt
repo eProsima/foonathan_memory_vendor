@@ -76,21 +76,38 @@ if(NOT foonathan_memory_FOUND)
       sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
   endif()
 
-  externalproject_add(foo_mem-ext
-  GIT_REPOSITORY https://github.com/foonathan/memory.git
-  GIT_TAG v0.7-3
-  TIMEOUT 600
-  # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
-  UPDATE_COMMAND ""
-  CMAKE_ARGS
-    -DFOONATHAN_MEMORY_BUILD_EXAMPLES=${BUILD_MEMORY_EXAMPLES}
-    -DFOONATHAN_MEMORY_BUILD_TESTS=${BUILD_MEMORY_TESTS}
-    -DFOONATHAN_MEMORY_BUILD_TOOLS=${BUILD_MEMORY_TOOLS}
-    -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
-    ${extra_cmake_args}
-    -Wno-dev
-    ${PATCH_COMMAND_STR}
-  )
+  if(NOT WINDOWS_INSTALLER)
+      externalproject_add(foo_mem-ext
+          GIT_REPOSITORY https://github.com/foonathan/memory.git
+          GIT_TAG v0.7-3
+          TIMEOUT 600
+          # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
+          UPDATE_COMMAND ""
+          CMAKE_ARGS
+          -DFOONATHAN_MEMORY_BUILD_EXAMPLES=${BUILD_MEMORY_EXAMPLES}
+          -DFOONATHAN_MEMORY_BUILD_TESTS=${BUILD_MEMORY_TESTS}
+          -DFOONATHAN_MEMORY_BUILD_TOOLS=${BUILD_MEMORY_TOOLS}
+          -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
+          ${extra_cmake_args}
+          -Wno-dev
+          ${PATCH_COMMAND_STR}
+          )
+  else()
+      externalproject_add(foo_mem-ext
+          GIT_REPOSITORY https://github.com/foonathan/memory.git
+          GIT_TAG v0.7-3
+          TIMEOUT 600
+          # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
+          UPDATE_COMMAND ""
+          CMAKE_ARGS
+          -DFOONATHAN_MEMORY_BUILD_EXAMPLES=${BUILD_MEMORY_EXAMPLES}
+          -DFOONATHAN_MEMORY_BUILD_TESTS=${BUILD_MEMORY_TESTS}
+          -DFOONATHAN_MEMORY_BUILD_TOOLS=${BUILD_MEMORY_TOOLS}
+          -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
+          -Wno-dev
+          BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --config Release --target install && ${CMAKE_COMMAND} --build <BINARY_DIR> --config Debug --target install
+          )
+  endif()
 
   # The external project will install to the build folder, but we'll install that on make install.
   install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install/
