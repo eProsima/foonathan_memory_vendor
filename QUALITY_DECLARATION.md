@@ -2,9 +2,9 @@ This document is a declaration of software quality for the `foonathan_memory_ven
 
 # `foonathan_memory_vendor` Quality Declaration
 
-The package `foonathan_memory_vendor` claims to be in the **Quality Level 4** category.
+The package `foonathan_memory_vendor` claims to be in the **Quality Level 3** category.
 
-Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 4 in REP-2004](https://www.ros.org/reps/rep-2004.html).
+Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 3 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
 ## Version Policy [1]
 
@@ -15,6 +15,7 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 ### Version Stability [1.ii]
 
 `foonathan_memory_vendor` is at or above a stable version, i.e. `>= 1.0.0`.
+The current version can be found in its [package.xml](package.xml).
 
 ### Public API Declaration [1.iii]
 
@@ -124,3 +125,47 @@ Currently nightly results can be seen here:
 ### Vulnerability Disclosure Policy [7.i]
 
 This package conforms to the Vulnerability Disclosure Policy in [REP-2006](https://www.ros.org/reps/rep-2006.html).
+
+# Current status Summary
+
+The chart below compares the requirements in the REP-2004 with the current state of the `foonathan_memory_vendor` package.
+
+|Number|  Requirement| Current state |
+|--|--|--|
+|1| **Version policy** |---|
+|1.i|Version Policy available | ✓ |
+|1.ii|Stable version |✓||
+|1.iii|Declared public API|None|
+|1.iv|API stability policy|✓|
+|1.v|ABI stability policy| None |
+|1.vi_|API/ABI stable within ros distribution|✓|
+|2| **Change control process** |---|
+|2.i| All changes occur on change request | ✓|
+|2.ii| Contributor origin (DCO, CLA, etc) | ✓|
+|2.iii| Peer review policy | ✓ |
+|2.iv| CI policy for change requests | ✓ |
+|2.v| Documentation policy for change requests | ✓ |
+|3| **Documentation** | --- |
+|3.i| Per feature documentation | None |
+|3.ii| Per public API item documentation | None |
+|3.iii| Declared License(s) | ✓ |
+|3.iv| Copyright in source files| ✓ |
+|3.v.a| Quality declaration linked to README | ✓ |
+|3.v.b| Centralized declaration available for peer review |✓|
+|4| **Testing** | --- |
+|4.i| Feature items tests | None |
+|4.ii| Public API tests | None |
+|4.iii.a| Using coverage |None |
+|4.iii.a| Coverage policy | None |
+|4.iv.a| Performance tests (if applicable) | None |
+|4.iv.b| Performance tests policy| None |
+|4.v.a| Code style enforcement (linters)| ✓ |
+|4.v.b| Use of static analysis tools | None |
+|5| **Dependencies** | --- |
+|5.i| Must not have ROS lower level dependencies | ✓ |
+|5.ii| Optional ROS lower level dependencies| ✓ |
+|5.iii| Justifies quality use of non-ROS dependencies |✓|
+|6| **Platform support** | --- |
+|6.i| Support targets Tier1 ROS platforms| ✓ |
+|7| **Security** | --- |
+|7.i| Vulnerability Disclosure Policy | ✓ |
