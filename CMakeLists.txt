@@ -67,6 +67,21 @@ if(NOT foonathan_memory_FOUND)
     set(PATCH_COMMAND_STR PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch && sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
   endif()
 
+  #Inherit variables from this CMAKE
+  get_cmake_property(CACHE_VARS CACHE_VARIABLES)
+  foreach(CACHE_VAR ${CACHE_VARS})
+    get_property(CACHE_VAR_HELPSTRING CACHE ${CACHE_VAR} PROPERTY HELPSTRING)
+    if(CACHE_VAR_HELPSTRING STREQUAL "No help, variable specified on the command line.")
+      get_property(CACHE_VAR_TYPE CACHE ${CACHE_VAR} PROPERTY TYPE)
+      if(CACHE_VAR_TYPE STREQUAL "UNINITIALIZED")
+        set(CACHE_VAR_TYPE)
+      else()
+        set(CACHE_VAR_TYPE :${CACHE_VAR_TYPE})
+      endif()
+      list(APPEND CMAKE_ARGS "-D${CACHE_VAR}${CACHE_VAR_TYPE}=${${CACHE_VAR}}")
+    endif()
+  endforeach()
+
   externalproject_add(foo_mem-ext
   GIT_REPOSITORY https://github.com/foonathan/memory.git
   GIT_TAG c619113
@@ -74,6 +89,7 @@ if(NOT foonathan_memory_FOUND)
   # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
   UPDATE_COMMAND ""
   CMAKE_ARGS
+    ${CMAKE_ARGS}
     -DFOONATHAN_MEMORY_BUILD_EXAMPLES=${BUILD_MEMORY_EXAMPLES}
     -DFOONATHAN_MEMORY_BUILD_TESTS=${BUILD_MEMORY_TESTS}
     -DFOONATHAN_MEMORY_BUILD_TOOLS=${BUILD_MEMORY_TOOLS}
