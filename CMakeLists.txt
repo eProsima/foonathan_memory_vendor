@@ -12,6 +12,10 @@ if(NOT foonathan_memory_FOUND)
   # unless the library was explicitly added as a static library.
   option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
 
+  # Option to build memory examples
+  option(BUILD_MEMORY_EXAMPLES "Build memory examples" OFF)
+  # Option to build memory tests
+  option(BUILD_MEMORY_TESTS "Build memory tests" OFF)
   # Option to build memory tools
   option(BUILD_MEMORY_TOOLS "Build memory tools" ON)
 
@@ -64,8 +68,8 @@ if(NOT foonathan_memory_FOUND)
   # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
   UPDATE_COMMAND ""
   CMAKE_ARGS
-    -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF
-    -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
+    -DFOONATHAN_MEMORY_BUILD_EXAMPLES=${BUILD_MEMORY_EXAMPLES}
+    -DFOONATHAN_MEMORY_BUILD_TESTS=${BUILD_MEMORY_TESTS}
     -DFOONATHAN_MEMORY_BUILD_TOOLS=${BUILD_MEMORY_TOOLS}
     -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install
     ${extra_cmake_args}
