@@ -18,6 +18,12 @@ if(NOT foonathan_memory_FOUND)
   option(BUILD_MEMORY_TESTS "Build memory tests" OFF)
   # Option to build memory tools
   option(BUILD_MEMORY_TOOLS "Build memory tools" ON)
+  
+  # Validate option dependency
+  if( (NOT BUILD_MEMORY_TOOLS) AND (BUILD_MEMORY_EXAMPLES OR BUILD_MEMORY_TESTS) )
+    message(FATAL_ERROR
+      "BUILD_MEMORY_TOOLS is required when BUILD_MEMORY_EXAMPLES or BUILD_MEMORY_TESTS are set")
+  endif()
 
   if(BUILD_SHARED_LIBS)
     # Library will be statically created with PIC code
