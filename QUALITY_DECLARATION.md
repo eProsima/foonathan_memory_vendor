@@ -2,7 +2,7 @@ This document is a declaration of software quality for the `foonathan_memory_ven
 
 # `foonathan_memory_vendor` Quality Declaration
 
-The package `foonathan_memory_vendor` claims to be in the **Quality Level 3** category.
+The package `foonathan_memory_vendor` claims to be in the **Quality Level 2** category.
 
 Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 3 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
@@ -108,7 +108,7 @@ It also has several test dependencies, which do not affect the resulting quality
 
 `foonathan_memory` is a C++ library used to augment std::allocator.
 
-It is **Quality Level 4**, see its [Quality Declaration document](QUALITY_DECLARATION_foonathan_memory.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/eProsima/Fast-DDS/blob/master/Quality_Declaration_foonathan_memory.md).
 
 ## Platform Support [6]
 
@@ -137,8 +137,8 @@ The chart below compares the requirements in the REP-2004 with the current state
 |1.ii|Stable version |✓||
 |1.iii|Declared public API|None|
 |1.iv|API stability policy|✓|
-|1.v|ABI stability policy| None |
-|1.vi_|API/ABI stable within ros distribution|✓|
+|1.v|ABI stability policy| N/A |
+|1.vi|API/ABI stable within ros distribution|✓|
 |2| **Change control process** |---|
 |2.i| All changes occur on change request | ✓|
 |2.ii| Contributor origin (DCO, CLA, etc) | ✓|
@@ -146,21 +146,21 @@ The chart below compares the requirements in the REP-2004 with the current state
 |2.iv| CI policy for change requests | ✓ |
 |2.v| Documentation policy for change requests | ✓ |
 |3| **Documentation** | --- |
-|3.i| Per feature documentation | None |
-|3.ii| Per public API item documentation | None |
+|3.i| Per feature documentation | N/A |
+|3.ii| Per public API item documentation | N/A |
 |3.iii| Declared License(s) | ✓ |
 |3.iv| Copyright in source files| ✓ |
 |3.v.a| Quality declaration linked to README | ✓ |
 |3.v.b| Centralized declaration available for peer review |✓|
 |4| **Testing** | --- |
-|4.i| Feature items tests | None |
-|4.ii| Public API tests | None |
-|4.iii.a| Using coverage |None |
-|4.iii.a| Coverage policy | None |
-|4.iv.a| Performance tests (if applicable) | None |
-|4.iv.b| Performance tests policy| None |
+|4.i| Feature items tests | N/A |
+|4.ii| Public API tests | N/A |
+|4.iii.a| Using coverage |N/A |
+|4.iii.a| Coverage policy | N/A |
+|4.iv.a| Performance tests (if applicable) | N/A |
+|4.iv.b| Performance tests policy| N/A |
 |4.v.a| Code style enforcement (linters)| ✓ |
-|4.v.b| Use of static analysis tools | None |
+|4.v.b| Use of static analysis tools | N/A |
 |5| **Dependencies** | --- |
 |5.i| Must not have ROS lower level dependencies | ✓ |
 |5.ii| Optional ROS lower level dependencies| ✓ |
