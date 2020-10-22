@@ -66,6 +66,8 @@ if(NOT foonathan_memory_FOUND)
 
   if(INSTALLER_PLATFORM)
     set(PATCH_COMMAND_STR PATCH_COMMAND git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch && sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
+  elseif(BUILD_MEMORY_TESTS)
+    set(PATCH_COMMAND_STR PATCH_COMMAND git cherry-pick 09b884c18abb314bfa678df27141a4dcad71c4ba)
   endif()
 
   externalproject_add(foo_mem-ext
