@@ -14,15 +14,19 @@
 
 if(MSVC_VERSION EQUAL 1900)
     if(CMAKE_CL_64)
-        include("${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2015/cmake/foonathan_memory-config.cmake")
+        include(
+          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2015/cmake/foonathan_memory-config.cmake")
     else()
-        include("${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2015/cmake/foonathan_memory-config.cmake")
+        include(
+          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2015/cmake/foonathan_memory-config.cmake")
     endif()
 elseif(MSVC_VERSION GREATER 1900)
     if(CMAKE_CL_64)
-        include("${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2017/cmake/foonathan_memory-config.cmake")
+        include(
+          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2017/cmake/foonathan_memory-config.cmake")
     else()
-        include("${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2017/cmake/foonathan_memory-config.cmake")
+        include(
+          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2017/cmake/foonathan_memory-config.cmake")
     endif()
 else()
     message(FATAL_ERROR "Not supported version of Visual Studio")
