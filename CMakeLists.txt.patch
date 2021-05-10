@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c43485d..ee60bd9 100644
+index c43485d..70a7b5f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,13 +35,13 @@ if(UNIX)
@@ -22,3 +22,16 @@ index c43485d..ee60bd9 100644
      set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
  else()
      message(FATAL_ERROR "Could not set install folders for this platform!")
+@@ -69,4 +69,11 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE" "${CMAKE_CURRENT_SOURCE_DIR}
+ install(EXPORT foonathan_memoryTargets DESTINATION ${FOONATHAN_MEMORY_CMAKE_CONFIG_INSTALL_DIR}
+                                        FILE foonathan_memory-config.cmake)
+ 
+-
++# install symbol files if any
++if(MSVC OR MSVC_IDE)
++    install(CODE
++        "file(GLOB_RECURSE PDB_FILE \"${CMAKE_CURRENT_BINARY_DIR}/*memory*.pdb\") \n if(PDB_FILE) \n file(INSTALL \${PDB_FILE}\n DESTINATION \${CMAKE_INSTALL_PREFIX}/${FOONATHAN_MEMORY_ARCHIVE_INSTALL_DIR}) \n endif()"
++        COMPONENT symbols
++        CONFIGURATIONS Debug
++        )
++endif()
