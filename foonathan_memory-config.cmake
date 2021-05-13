@@ -12,23 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if(MSVC_VERSION EQUAL 1900)
-    if(CMAKE_CL_64)
-        include(
-          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2015/cmake/foonathan_memory-config.cmake")
-    else()
-        include(
-          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2015/cmake/foonathan_memory-config.cmake")
-    endif()
-elseif(MSVC_VERSION LESS 1920)
-    if(CMAKE_CL_64)
-        include(
-          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2017/cmake/foonathan_memory-config.cmake")
-    else()
-        include(
-          "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2017/cmake/foonathan_memory-config.cmake")
-    endif()
-elseif(MSVC_VERSION GREATER_EQUAL 1920)
+if(MSVC_VERSION LESS_EQUAL 1900)
+    message(FATAL_ERROR "Not supported version of Visual Studio")
+else()
     if(CMAKE_CL_64)
         include(
           "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-x64Win64VS2019/cmake/foonathan_memory-config.cmake")
@@ -36,6 +22,4 @@ elseif(MSVC_VERSION GREATER_EQUAL 1920)
         include(
           "${CMAKE_CURRENT_LIST_DIR}/../share/foonathan_memory-i86Win32VS2019/cmake/foonathan_memory-config.cmake")
     endif()
-else()
-    message(FATAL_ERROR "Not supported version of Visual Studio")
 endif()
