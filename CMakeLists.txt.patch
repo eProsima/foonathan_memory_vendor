@@ -1,9 +1,9 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c43485d..70a7b5f 100644
+index e765e39..b746e8e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -35,13 +35,13 @@ if(UNIX)
- 
+@@ -31,13 +31,13 @@ if(UNIX OR VXWORKS)
+     set(FOONATHAN_MEMORY_ADDITIONAL_FILES_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/foonathan_memory")
  elseif(WIN32)
      set(FOONATHAN_MEMORY_INC_INSTALL_DIR "include/foonathan_memory")
 -    set(FOONATHAN_MEMORY_RUNTIME_INSTALL_DIR   "bin")
@@ -22,7 +22,7 @@ index c43485d..70a7b5f 100644
      set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
  else()
      message(FATAL_ERROR "Could not set install folders for this platform!")
-@@ -69,4 +69,11 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE" "${CMAKE_CURRENT_SOURCE_DIR}
+@@ -65,4 +65,11 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE" "${CMAKE_CURRENT_SOURCE_DIR}
  install(EXPORT foonathan_memoryTargets DESTINATION ${FOONATHAN_MEMORY_CMAKE_CONFIG_INSTALL_DIR}
                                         FILE foonathan_memory-config.cmake)
  
