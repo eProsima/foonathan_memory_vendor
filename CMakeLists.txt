@@ -68,6 +68,11 @@ if(NOT foonathan_memory_FOUND)
     set(PATCH_COMMAND_STR PATCH_COMMAND
       git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch &&
       sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
+  else()
+    # This could be removed whenever we change the GIT_TAG to anything above e9e13b0de82032051a49fd12ba2962e26949fb75
+    set(PATCH_COMMAND_STR PATCH_COMMAND
+      curl https://github.com/MiguelCompany/memory/commit/6041b31341c323d07611051bb6e1970aabee5532.diff | git apply -)
+
   endif()
 
   externalproject_add(foo_mem-ext
