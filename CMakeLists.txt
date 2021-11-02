@@ -68,15 +68,11 @@ if(NOT foonathan_memory_FOUND)
     set(PATCH_COMMAND_STR PATCH_COMMAND
       git apply ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt.patch &&
       sed -i -e "s/INSTALLER_PLATFORM/${INSTALLER_PLATFORM}/g" CMakeLists.txt)
-  elseif(BUILD_MEMORY_TESTS)
-    # This could be removed whenever we change the GIT_TAG from c619113 to anything above 09b884c
-    set(PATCH_COMMAND_STR PATCH_COMMAND
-      curl https://github.com/foonathan/memory/commit/09b884c18abb314bfa678df27141a4dcad71c4ba.diff | git apply -)
   endif()
 
   externalproject_add(foo_mem-ext
   GIT_REPOSITORY https://github.com/foonathan/memory.git
-  GIT_TAG c619113
+  GIT_TAG v0.7-1
   TIMEOUT 600
   # Avoid the update (git pull) and so the recompilation of foonathan_memory library each time.
   UPDATE_COMMAND ""
