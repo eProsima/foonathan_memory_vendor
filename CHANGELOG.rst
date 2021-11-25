@@ -2,6 +2,10 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.0 (2021-11-25)
+------------------
+* Update upstream to release 0.7-1 (#49)
+
 1.1.0 (2021-05-18)
 ------------------
 * QD Security Vulnerability Declaration: REP 2006 (`#34 <https://github.com/eProsima/foonathan_memory_vendor/pull/34>`_)
