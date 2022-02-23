@@ -18,6 +18,8 @@ if(NOT foonathan_memory_FOUND)
   option(BUILD_MEMORY_TESTS "Build memory tests" OFF)
   # Option to build memory tools
   option(BUILD_MEMORY_TOOLS "Build memory tools" ON)
+  # Option for position independence
+  option(CMAKE_POSITION_INDEPENDENT_CODE "Enable position independence" ON)
 
   # Validate option dependency
   if((NOT BUILD_MEMORY_TOOLS) AND (BUILD_MEMORY_EXAMPLES OR BUILD_MEMORY_TESTS))
@@ -27,16 +29,10 @@ if(NOT foonathan_memory_FOUND)
   endif()
 
   # Propagate BUILD_SHARED_LIBS
-  if(DEFINED BUILD_SHARED_LIBS)
-    list(APPEND extra_cmake_args -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS})
-  endif()
+  list(APPEND extra_cmake_args -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS})
 
   # Propagate CMAKE_POSITION_INDEPENDENT_CODE
-  if(DEFINED CMAKE_POSITION_INDEPENDENT_CODE)
-    list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE})
-  elseif(BUILD_SHARED_LIBS)
-    list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=ON})
-  endif()
+  list(APPEND extra_cmake_args -DCMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE})
 
   if(DEFINED CMAKE_BUILD_TYPE)
     list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
