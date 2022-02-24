@@ -4,7 +4,7 @@
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>foonathan_memory_vendor</name>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
   <description>Foonathan/memory vendor package for Fast-RTPS.</description>
   <maintainer email="miguelcompany@eprosima.com">Miguel Company</maintainer>
   <maintainer email="steven@openrobotics.org">Steven! Ragnarök</maintainer>
@@ -16,7 +16,7 @@
   <buildtool_export_depend>cmake</buildtool_export_depend>
 
   <!--depend>FOONATHAN_MEMORY</depend-->
-  
+
   <test_depend>ament_cmake_copyright</test_depend>
   <test_depend>ament_cmake_lint_cmake</test_depend>
   <test_depend>ament_cmake_test</test_depend>
@@ -26,4 +26,3 @@
     <build_type>cmake</build_type>
   </export>
 </package>
-
