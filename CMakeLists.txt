@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(foonathan_memory_vendor VERSION "1.2.1")
+project(foonathan_memory_vendor VERSION "1.2.2")
 
 find_package(foonathan_memory QUIET)
 

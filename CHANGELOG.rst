@@ -2,6 +2,10 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.2 (2022-12-9)
+-----------------
+* Fix CMake minimum required version (#60)
+
 1.2.1 (2022-02-24)
 ------------------
 * Propagate `BUILD_SHARED_LIBS` and `CMAKE_POSITION_INDEPENDENT_CODE` to memory (#55)(#58)
