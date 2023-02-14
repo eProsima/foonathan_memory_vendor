@@ -2,12 +2,12 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.3.0 (2023-02-14)
+------------------
 * Update upstream to release 0.7-3 (#62)(#63)
 
-1.2.2 (2022-12-9)
------------------
+1.2.2 (2022-12-09)
+------------------
 * Fix CMake minimum required version (#60)
 
 1.2.1 (2022-02-24)
