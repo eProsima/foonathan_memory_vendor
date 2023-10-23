@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
 project(foonathan_memory_vendor VERSION "1.3.1")
 
-find_package(foonathan_memory QUIET)
+execute_process(
+    COMMAND ${CMAKE_COMMAND} --find-package -DNAME=foonathan_memory -DCOMPILER_ID=$<IF:$<BOOL:${WIN32}>,MSVC,GNU> -DLANGUAGE=CXX -DMODE=EXIST
+    ERROR_QUIET
+    RESULT_VARIABLE _EXIT_CODE
+    )
 
-if(NOT foonathan_memory_FOUND)
+if(NOT _EXIT_CODE EQUAL 0)
   ###############################################################################
   # Default shared libraries
   ###############################################################################
@@ -96,7 +100,7 @@ if(NOT foonathan_memory_FOUND)
   install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/foo_mem_ext_prj_install/
   DESTINATION ${CMAKE_INSTALL_PREFIX})
 else()
-  message(STATUS "Found foonathan_memory ${foonathan_memory_VERSION}")
+  message(STATUS "Found foonathan_memory")
 endif()
 
 configure_file(foonathan_memory_vendorConfig.cmake.in
