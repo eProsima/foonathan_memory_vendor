@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(foonathan_memory_vendor VERSION "1.3.1")
 
 execute_process(
-    COMMAND ${CMAKE_COMMAND} --find-package -DNAME=foonathan_memory -DCOMPILER_ID=$<IF:$<BOOL:${WIN32}>,MSVC,GNU> -DLANGUAGE=CXX -DMODE=EXIST
+    COMMAND ${CMAKE_COMMAND} --find-package -DNAME=foonathan_memory -DCOMPILER_ID=$<IF:$<BOOL:${WIN32}>,MSVC,GNU> -DLANGUAGE=CXX -DMODE=EXIST -DCMAKE_FIND_DEBUG_MODE=ON
     ERROR_QUIET
     RESULT_VARIABLE _EXIT_CODE
     )
