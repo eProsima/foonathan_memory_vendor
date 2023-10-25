@@ -2,6 +2,10 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.2 (2023-10-24)
+------------------
+* Improve mechanism to find an installation of foonathan_memory (#67)
+
 1.3.1 (2023-05-10)
 ------------------
 * Added support for QNX 7.1 build (#65)
