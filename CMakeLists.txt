@@ -1,16 +1,20 @@
 cmake_minimum_required(VERSION 3.14)
 project(foonathan_memory_vendor VERSION "1.3.2")
 
-execute_process(COMMAND
-    ${CMAKE_COMMAND}
-    --find-package
-    -DNAME=foonathan_memory
-    -DCOMPILER_ID=$<IF:$<BOOL:${WIN32}>,MSVC,GNU>
-    -DLANGUAGE=CXX
-    -DMODE=EXIST
-    -DCMAKE_FIND_DEBUG_MODE=ON
-  ERROR_QUIET
-  RESULT_VARIABLE _EXIT_CODE)
+option(FORCE_BUILD "Force this package build even is already installed in the system" OFF)
+
+if(FORCE_BUILD EQUAL OFF)
+  execute_process(COMMAND
+      ${CMAKE_COMMAND}
+      --find-package
+      -DNAME=foonathan_memory
+      -DCOMPILER_ID=$<IF:$<BOOL:${WIN32}>,MSVC,GNU>
+      -DLANGUAGE=CXX
+      -DMODE=EXIST
+      -DCMAKE_FIND_DEBUG_MODE=ON
+    ERROR_QUIET
+    RESULT_VARIABLE _EXIT_CODE)
+endif()
 
 if(NOT _EXIT_CODE EQUAL 0)
   ###############################################################################
