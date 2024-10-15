@@ -12,6 +12,12 @@
 Vendor package for [foonathan/memory](https://github.com/foonathan/memory).
 This package will download, patch, build and install *foonathan/memory* for its use with Fast DDS.
 
+## Commercial support
+
+Looking for commercial support? Write us to info@eprosima.com
+
+Find more about us at [eProsima’s webpage](https://eprosima.com/).
+
 ## Quality Declaration
 
 This package claims to be in the **Quality Level 2** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
