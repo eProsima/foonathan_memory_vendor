@@ -2,7 +2,7 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.3.2 (2023-10-24)
+1.3.2 (2025-12-22)
 ------------------
 * Improve mechanism to find an installation of foonathan_memory (#67)
 
