@@ -5,6 +5,9 @@ Changelog for package foonathan_memory_vendor
 1.3.2 (2025-12-22)
 ------------------
 * Improve mechanism to find an installation of foonathan_memory (#67)
+* Fix ament_lint_cmake errors (#68)
+* Add FORCE_BUILD option to cmake (#69)
+* Shorten new option description (#70)
 
 1.3.1 (2023-05-10)
 ------------------
