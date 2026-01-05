@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(foonathan_memory_vendor VERSION "1.3.2")
+project(foonathan_memory_vendor VERSION "1.4.0")
 
 option(FOONATHAN_MEMORY_FORCE_VENDORED_BUILD
         "Force foonathan memory vendor package build even if it is already installed in the system" OFF)
