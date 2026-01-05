@@ -2,8 +2,8 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.0 (2026-01-05)
+------------------
 * Update upstream to release 0.7-4 (#75)
 * Remove installer CMake patches (#75)
 
