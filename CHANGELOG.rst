@@ -2,8 +2,8 @@
 Changelog for package foonathan_memory_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.1 (2026-02-25)
+------------------
 * Change upstream to fix build with clang (#80)
 * Change upstream to eProsima fork to avoid patch command (#80)
 
